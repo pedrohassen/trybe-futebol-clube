@@ -1,5 +1,6 @@
 import Team from '../database/models/Team';
 import Match from '../database/models/Match';
+import { IMatch } from '../interfaces/match.interface';
 
 export default class MatchService {
   public team = Team;
@@ -19,5 +20,29 @@ export default class MatchService {
     });
 
     return matchesData;
+  };
+
+  public createMatch = async ({ homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals }: IMatch) => {
+    const newMatch = await Match.create({
+      homeTeamId,
+      homeTeamGoals,
+      awayTeamId,
+      awayTeamGoals,
+      inProgress: true,
+    });
+
+    return newMatch;
+  };
+
+  public updateMatchStatus = async (id: string) => {
+    const changeMatch = await Match.update(
+      {
+        inProgress: false,
+      },
+      {
+        where: { id },
+      },
+    );
+    return changeMatch;
   };
 }

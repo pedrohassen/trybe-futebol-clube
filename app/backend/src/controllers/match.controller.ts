@@ -12,4 +12,23 @@ export default class MatchController {
 
     return res.status(200).send(matches);
   };
+
+  public createMatch = async (
+    req: Request,
+    res: Response,
+  ) => {
+    const newMatch = await this.service.createMatch(req.body);
+
+    return res.status(201).send(newMatch);
+  };
+
+  public updateMatchStatus = async (
+    req: Request,
+    res: Response,
+  ) => {
+    const { id } = req.params;
+    await this.service.updateMatchStatus(id);
+
+    return res.status(200).send({ message: 'Finished' });
+  };
 }
