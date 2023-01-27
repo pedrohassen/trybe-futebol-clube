@@ -31,13 +31,26 @@ export default class MatchService {
       inProgress: true,
     });
 
-    return newMatch;
+    return newMatch.dataValues;
   };
 
   public updateMatchStatus = async (id: string) => {
     const changeMatch = await Match.update(
       {
         inProgress: false,
+      },
+      {
+        where: { id },
+      },
+    );
+    return changeMatch;
+  };
+
+  public updateMatchResults = async ({ id, homeTeamGoals, awayTeamGoals }: IMatch) => {
+    const changeMatch = await Match.update(
+      {
+        homeTeamGoals,
+        awayTeamGoals,
       },
       {
         where: { id },

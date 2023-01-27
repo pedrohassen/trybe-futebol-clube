@@ -1,7 +1,7 @@
 export interface IMatch {
-  id?: number,
-  homeTeamId: number,
+  id?: number | string,
+  homeTeamId?: number,
   homeTeamGoals: number,
-  awayTeamId: number,
+  awayTeamId?: number,
   awayTeamGoals: number,
 }

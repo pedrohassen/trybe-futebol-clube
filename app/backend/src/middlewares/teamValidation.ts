@@ -19,7 +19,7 @@ export default class TeamValidation {
     }
 
     if (homeTeamId === awayTeamId) {
-      return res.status(404).send({
+      return res.status(422).send({
         message: 'It is not possible to create a match with two equal teams',
       });
     }

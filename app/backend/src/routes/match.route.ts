@@ -21,5 +21,6 @@ export default class MatchRoute {
       matchControler.createMatch,
     );
     this.router.patch('/:id/finish', matchControler.updateMatchStatus);
+    this.router.patch('/:id', matchControler.updateMatchResults);
   }
 }
