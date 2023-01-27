@@ -9,5 +9,6 @@ export default class MatchRoute {
   constructor() {
     this.router = express.Router();
     this.router.get('/', matchControler.getAllMatches);
+    this.router.get('/search', matchControler.getAllMatches);
   }
 }
