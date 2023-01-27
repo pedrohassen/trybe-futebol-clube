@@ -41,7 +41,7 @@ export default class LoginValidation {
 
       next();
     } catch (error) {
-      return res.status(401).send({ message: 'Expired or invalid token' });
+      return res.status(401).send({ message: 'Token must be a valid token' });
     }
   };
 }
