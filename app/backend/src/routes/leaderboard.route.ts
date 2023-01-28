@@ -8,7 +8,7 @@ export default class LeaderBoardRoute {
 
   constructor() {
     this.router = express.Router();
-    this.router.get('/');
+    this.router.get('/', controller.getLeaderboardAll);
     this.router.get('/home', controller.getLeaderboardHome);
     this.router.get('/away', controller.getLeaderboardAway);
   }
