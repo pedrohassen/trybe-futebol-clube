@@ -10,6 +10,6 @@ export default class LeaderBoardRoute {
     this.router = express.Router();
     this.router.get('/');
     this.router.get('/home', controller.getLeaderboardHome);
-    this.router.get('/away');
+    this.router.get('/away', controller.getLeaderboardAway);
   }
 }

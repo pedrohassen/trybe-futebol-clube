@@ -21,4 +21,22 @@ export default class LeaderBoardService {
         || b.goalsFavor - a.goalsFavor
         || b.goalsOwn - a.goalsOwn));
   }
+
+  public async getLeaderboardAway() {
+    return this.model.findAll({
+      include: [{
+        association: 'awayMatches',
+        attributes: ['homeTeamGoals', 'awayTeamGoals'],
+        where: { inProgress: false },
+      },
+      ],
+    })
+      .then((result) => result.map((team) => team.get({ plain: true })))
+      .then((result) => result.map((team) => new LeaderBoard(team)))
+      .then((result2) => result2
+        .sort((a2, b2) => b2.totalPoints - a2.totalPoints
+        || b2.goalsBalance - a2.goalsBalance
+        || b2.goalsFavor - a2.goalsFavor
+        || b2.goalsOwn - a2.goalsOwn));
+  }
 }
