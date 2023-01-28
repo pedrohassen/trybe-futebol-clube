@@ -1,9 +1,10 @@
 import * as express from 'express';
-import { LoginRoute, TeamRoute, MatchRoute } from './routes';
+import { LoginRoute, TeamRoute, MatchRoute, LeaderBoardRoute } from './routes';
 
 const loginRoute = new LoginRoute();
 const teamRoute = new TeamRoute();
 const matchRoute = new MatchRoute();
+const leaderBoardRoute = new LeaderBoardRoute();
 
 class App {
   public app: express.Express;
@@ -21,6 +22,8 @@ class App {
     this.app.use('/teams', teamRoute.router);
 
     this.app.use('/matches', matchRoute.router);
+
+    this.app.use('/leaderboard', leaderBoardRoute.router);
   }
 
   private config():void {
