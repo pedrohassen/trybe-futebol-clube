@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-// import LoginService from '../services/login.service';
 import JwtFunctions from '../auth/jwtFunctions';
 
-// const loginService = new LoginService();
 const jwt = new JwtFunctions();
 
 export default class UserController {

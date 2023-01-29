@@ -5,12 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import UserModel from '../database/models/User'
-// import Example from '../database/models/ExampleModel';
 import loginMock from './mocks/login.mock';
-
-import { Response } from 'superagent';
-
-// const app = new App();
 
 chai.use(chaiHttp);
 
@@ -48,7 +43,6 @@ describe('Testa a rota "/login"', () => {
   });
 
   it('Verifica se o password informado incorretamente, impossibilita o login', async () => {
-    // sinon.stub(UserModel, 'findOne').resolves(loginMock.dbUser as unknown as UserModel);
     const { body, status } = await chai.request(app).post('/login').send(loginMock.wrongPass);
     expect(body).to.deep.eq({ message: "Incorrect email or password" });
     expect(status).to.be.eq(401);
